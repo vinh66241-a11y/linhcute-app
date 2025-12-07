@@ -10,15 +10,15 @@
                 <dict>
                     <key>kind</key>
                     <string>software-package</string>
-                    <!-- LINK GOOGLE DRIVE MỚI -->
+                    <!-- LINK GOOGLE DRIVE USERCONTENT MỚI -->
                     <key>url</key>
-                    <string>https://drive.google.com/uc?export=download&amp;id=1BgDozuzvx2Hj-__ckh0ghRhX5MbVMOVv</string>
+                    <string>https://drive.usercontent.google.com/download?id=1BgDozuzvx2Hj-__ckh0ghRhX5MbVMOVv&amp;export=download&amp;authuser=0&amp;confirm=t</string>
                 </dict>
             </array>
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>
-                <string>vn.vng.pubgmobile</string>
+                <string>com.textasticapp.textastic-universal</string>
                 <key>bundle-version</key>
                 <string>1.0</string>
                 <key>kind</key>
