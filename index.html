@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cài Linhcute</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: -apple-system, sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .install-btn {
+            display: inline-block;
+            background: #007AFF;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: transform 0.2s;
+        }
+        .install-btn:hover {
+            transform: scale(1.05);
+        }
+        .steps {
+            text-align: left;
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 Linhcute App</h1>
+        <p>Phiên bản 1.0</p>
+        
+        <!-- LINK SẼ THAY ĐỔI THEO USERNAME GITHUB CỦA BẠN -->
+        <a href="itms-services://?action=download-manifest&url=https://YOUR_USERNAME.github.io/linhcute-app/manifest.plist" 
+           class="install-btn">
+           ⬇️ CÀI ĐẶT NGAY
+        </a>
+        
+        <div class="steps">
+            <h3>📝 Hướng dẫn:</h3>
+            <ol>
+                <li>Bấm nút trên (trên Safari iPhone)</li>
+                <li>Chọn <strong>"Install"</strong></li>
+                <li>Vào <strong>Cài đặt → Cài đặt chung → Quản lý VPN & Thiết bị</strong></li>
+                <li>Bấm <strong>"Trust"</strong> chứng chỉ Developer</li>
+                <li>Mở app từ màn hình chính</li>
+            </ol>
+        </div>
+        
+        <p><small>Yêu cầu: iOS 12.0+</small></p>
+    </div>
+    
+    <script>
+        // Tự động phát hiện iOS
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        if (!isIOS) {
+            document.querySelector('.container').innerHTML += 
+                '<p style="color:#FFD700; background:rgba(0,0,0,0.3); padding:10px; border-radius:8px;">⚠️ Vui lòng mở trang này trên iPhone/iPad để cài đặt</p>';
+        }
+    </script>
+</body>
+</html>
