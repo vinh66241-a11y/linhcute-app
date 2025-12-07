@@ -12,13 +12,13 @@
                     <string>software-package</string>
                     <!-- LINK IPA ĐẦY ĐỦ VỚI TẤT CẢ THAM SỐ -->
                     <key>url</key>
-                    <string>https://dl.dropboxusercontent.com/scl/fi/t7qy7ntqam7wcdvutdrvt/Linhcute.ipa?rlkey=tnu9ns19a2aiyrcdbtyldycn1&amp;st=ajw2fhyw</string>
+                    <string>https://www.transfernow.net/dl/20251207NLFGX9bj</string>
                 </dict>
             </array>
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>
-                <string>com.textasticapp.textastic-universal</string>
+                <string>org.brandonplank.flappybird</string>
                 <key>bundle-version</key>
                 <string>1.0</string>
                 <key>kind</key>
