@@ -65,46 +65,14 @@
             padding: 30px;
         }
         
-        .install-section {
-            text-align: center;
+        .step-section {
             margin-bottom: 25px;
-        }
-        
-        .install-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #34C759 0%, #32D74B 100%);
-            color: white;
-            text-decoration: none;
-            padding: 16px 35px;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 14px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(52, 199, 89, 0.3);
-            margin: 15px 0;
-            width: 100%;
-            max-width: 280px;
-        }
-        
-        .install-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(52, 199, 89, 0.4);
-        }
-        
-        .install-btn:active {
-            transform: translateY(0);
-        }
-        
-        .steps {
+            padding: 20px;
             background: #f8f9fa;
             border-radius: 14px;
-            padding: 20px;
-            margin-top: 20px;
         }
         
-        .steps h3 {
+        .step-title {
             color: #007AFF;
             margin-bottom: 12px;
             display: flex;
@@ -113,14 +81,67 @@
             font-size: 16px;
         }
         
-        .steps ol {
-            padding-left: 18px;
+        .step-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #007AFF;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 8px;
         }
         
-        .steps li {
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
             margin: 10px 0;
-            padding-left: 5px;
-            font-size: 14px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #34C759 0%, #32D74B 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(52, 199, 89, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(52, 199, 89, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #FF9500 0%, #FF5E3A 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(255, 149, 0, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(255, 149, 0, 0.4);
+        }
+        
+        .btn-disabled {
+            background: #cccccc;
+            color: #666666;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        
+        .btn-disabled:hover {
+            transform: none;
+            box-shadow: none;
         }
         
         .warning {
@@ -160,6 +181,45 @@
             margin-top: 8px;
         }
         
+        .status {
+            text-align: center;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .status-success {
+            background: #E8F7EE;
+            color: #34C759;
+            border: 1px solid #34C759;
+        }
+        
+        .status-error {
+            background: #FFEEEE;
+            color: #FF3B30;
+            border: 1px solid #FF3B30;
+        }
+        
+        .checklist {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .checklist li {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .checklist li:before {
+            content: "✓";
+            color: #34C759;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
         @media (max-width: 480px) {
             .container {
                 border-radius: 15px;
@@ -177,9 +237,9 @@
                 font-size: 24px;
             }
             
-            .install-btn {
-                padding: 14px 25px;
-                font-size: 16px;
+            .btn {
+                padding: 12px;
+                font-size: 15px;
             }
         }
         
@@ -192,6 +252,10 @@
         
         .pulse {
             animation: pulse 1.5s infinite;
+        }
+        
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -211,32 +275,63 @@
         
         <!-- Content -->
         <div class="content">
-            <!-- Install Button -->
-            <div class="install-section">
-                <button class="install-btn pulse" id="installBtn">
-                    ⬇️ CÀI ĐẶT NGAY
-                </button>
-                <p style="font-size: 14px; color: #666; margin-top: 5px;">
-                    Bấm nút trên để cài đặt ứng dụng
+            <!-- Status Messages -->
+            <div id="statusMobileconfig" class="status"></div>
+            <div id="statusInstall" class="status"></div>
+            
+            <!-- Bước 1: Cài đặt Mobileconfig -->
+            <div class="step-section" id="step1">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Cài đặt Chứng chỉ
+                </div>
+                <p style="font-size: 14px; color: #666; margin-bottom: 15px;">
+                    Trước khi cài ứng dụng, bạn cần cài đặt chứng chỉ Developer để hệ thống tin tưởng ứng dụng.
                 </p>
+                
+                <button class="btn btn-secondary pulse" id="btnMobileconfig">
+                    ⚙️ CÀI ĐẶT CHỨNG CHỈ
+                </button>
+                
+                <div class="checklist" id="mobileconfigChecklist">
+                    <li>Bấm nút "Cài đặt Chứng chỉ"</li>
+                    <li>Chọn "Cho phép" khi được hỏi</li>
+                    <li>Vào Settings → General → VPN & Device Management</li>
+                    <li>Bấm "Install" 2 lần</li>
+                    <li>Nhập passcode nếu được yêu cầu</li>
+                </div>
+            </div>
+            
+            <!-- Bước 2: Cài đặt Ứng dụng -->
+            <div class="step-section hidden" id="step2">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Cài đặt Ứng dụng
+                </div>
+                <p style="font-size: 14px; color: #666; margin-bottom: 15px;">
+                    Sau khi đã cài chứng chỉ, bạn có thể cài đặt ứng dụng Linhcute.
+                </p>
+                
+                <button class="btn btn-primary" id="btnInstallApp" disabled>
+                    ⬇️ CÀI ĐẶT ỨNG DỤNG
+                </button>
+                
+                <div class="checklist" id="installChecklist">
+                    <li>Bấm nút "Cài đặt Ứng dụng"</li>
+                    <li>Chọn "Install" khi được hỏi</li>
+                    <li>Chờ ứng dụng tải và cài đặt xong</li>
+                    <li>Mở ứng dụng từ màn hình chính</li>
+                </div>
             </div>
             
             <!-- Warning -->
             <div class="warning">
-                <strong>⚠️ Quan trọng:</strong> Sau khi cài đặt, vào <strong>Cài đặt → Cài đặt chung → Quản lý VPN & Thiết bị</strong> để tin cậy chứng chỉ Developer.
-            </div>
-            
-            <!-- Steps -->
-            <div class="steps">
-                <h3>📝 Hướng dẫn cài đặt:</h3>
-                <ol>
-                    <li><strong>Bước 1:</strong> Bấm nút "CÀI ĐẶT NGAY" bên trên</li>
-                    <li><strong>Bước 2:</strong> Chọn <strong>"Install"</strong> khi được hỏi</li>
-                    <li><strong>Bước 3:</strong> Chờ ứng dụng tải xong</li>
-                    <li><strong>Bước 4:</strong> Vào <strong>Cài đặt → Cài đặt chung → Quản lý VPN & Thiết bị</strong></li>
-                    <li><strong>Bước 5:</strong> Tìm chứng chỉ Developer → bấm <strong>"Trust"</strong></li>
-                    <li><strong>Bước 6:</strong> Ra màn hình chính → mở ứng dụng</li>
-                </ol>
+                <strong>⚠️ Lưu ý quan trọng:</strong>
+                <ul style="margin-top: 8px; padding-left: 20px; font-size: 13px;">
+                    <li>Phải hoàn thành Bước 1 trước khi làm Bước 2</li>
+                    <li>Nếu gặp lỗi "Untrusted Developer", vào Settings → General → VPN & Device Management để trust chứng chỉ</li>
+                    <li>Chỉ cài đặt từ nguồn tin cậy</li>
+                </ul>
             </div>
             
             <!-- Info Box -->
@@ -247,6 +342,7 @@
                     <li>Phiên bản: 1.0</li>
                     <li>Yêu cầu: iOS 12.0+</li>
                     <li>Dung lượng: ~15MB</li>
+                    <li>Chứng chỉ: Developer Certificate</li>
                 </ul>
             </div>
         </div>
@@ -255,36 +351,110 @@
         <div class="footer">
             <p>© 2024 Linhcute App</p>
             <p style="margin-top: 3px; color: #999;">
-                Chỉ cài đặt ứng dụng từ nguồn đáng tin cậy
+                Quy trình cài đặt an toàn - 2 bước
             </p>
         </div>
     </div>
 
     <script>
-        // URL cài đặt
+        // URLs
+        const mobileconfigUrl = 'https://release-assets.githubusercontent.com/github-production-release-asset/852142195/898ae2d9-c047-4279-96ae-6b41de99f137?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-12-07T15%3A38%3A28Z&rscd=attachment%3B+filename%3Dsigned_khoindvn.mobileconfig&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-12-07T14%3A37%3A36Z&ske=2025-12-07T15%3A38%3A28Z&sks=b&skv=2018-11-09&sig=RC8z9cd2t8Udre1ovnpgeLyrS8wcjHUj7RhO4iv4EF8%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2NTEyMDA2NywibmJmIjoxNzY1MTE5NzY3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.Xmm2LgaKQeTye5DMBy-b74MViml5U4dN1if8hVW0JJ4&response-content-disposition=attachment%3B%20filename%3Dsigned_khoindvn.mobileconfig&response-content-type=application%2Foctet-stream';
         const installUrl = 'itms-services://?action=download-manifest&url=https://vinh66241-a11y.github.io/linhcute-app/manifest.plist';
         
-        // Xử lý nút cài đặt
-        document.getElementById('installBtn').addEventListener('click', function() {
-            // Kiểm tra nếu là iOS
-            if (isIOS()) {
-                window.location.href = installUrl;
-            } else {
-                alert('Vui lòng mở trang này trên iPhone hoặc iPad để cài đặt ứng dụng.');
-            }
-        });
+        // DOM Elements
+        const btnMobileconfig = document.getElementById('btnMobileconfig');
+        const btnInstallApp = document.getElementById('btnInstallApp');
+        const statusMobileconfig = document.getElementById('statusMobileconfig');
+        const statusInstall = document.getElementById('statusInstall');
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        
+        // Biến trạng thái
+        let mobileconfigInstalled = false;
         
         // Kiểm tra thiết bị iOS
         function isIOS() {
             return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         }
         
-        // Hiển thị cảnh báo nếu không phải iOS
+        // Hiển thị thông báo
+        function showStatus(element, message, type) {
+            element.textContent = message;
+            element.className = `status status-${type}`;
+            element.style.display = 'block';
+            
+            // Tự động ẩn sau 5 giây
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Xử lý cài đặt Mobileconfig
+        btnMobileconfig.addEventListener('click', function() {
+            if (!isIOS()) {
+                showStatus(statusMobileconfig, '❌ Chỉ hỗ trợ trên iPhone/iPad', 'error');
+                return;
+            }
+            
+            // Mở link Mobileconfig
+            window.location.href = mobileconfigUrl;
+            
+            // Hiển thị hướng dẫn
+            showStatus(statusMobileconfig, '📱 Đang mở cài đặt chứng chỉ...', 'success');
+            
+            // Đổi nút thành "Đã cài đặt"
+            this.textContent = '✅ ĐÃ CÀI ĐẶT CHỨNG CHỈ';
+            this.classList.remove('btn-secondary', 'pulse');
+            this.classList.add('btn-disabled');
+            this.disabled = true;
+            
+            // Đánh dấu đã cài đặt Mobileconfig
+            mobileconfigInstalled = true;
+            
+            // Hiển thị bước 2 sau 3 giây
+            setTimeout(() => {
+                step2.classList.remove('hidden');
+                btnInstallApp.disabled = false;
+                btnInstallApp.classList.add('pulse');
+                showStatus(statusMobileconfig, '✅ Có thể chuyển sang Bước 2', 'success');
+            }, 3000);
+        });
+        
+        // Xử lý cài đặt ứng dụng
+        btnInstallApp.addEventListener('click', function() {
+            if (!isIOS()) {
+                showStatus(statusInstall, '❌ Chỉ hỗ trợ trên iPhone/iPad', 'error');
+                return;
+            }
+            
+            if (!mobileconfigInstalled) {
+                showStatus(statusInstall, '❌ Vui lòng cài đặt chứng chỉ trước (Bước 1)', 'error');
+                return;
+            }
+            
+            // Mở link cài đặt ứng dụng
+            window.location.href = installUrl;
+            
+            // Hiển thị thông báo
+            showStatus(statusInstall, '⬇️ Đang bắt đầu cài đặt ứng dụng...', 'success');
+            
+            // Đổi nút thành "Đang cài đặt"
+            this.textContent = '⏳ ĐANG CÀI ĐẶT...';
+            this.classList.remove('btn-primary', 'pulse');
+            this.classList.add('btn-disabled');
+            this.disabled = true;
+        });
+        
+        // Kiểm tra ban đầu
         if (!isIOS()) {
             const warning = document.createElement('div');
             warning.className = 'warning';
             warning.innerHTML = '<strong>📱 Thiết bị không hỗ trợ:</strong> Trang này chỉ dành cho iPhone và iPad. Vui lòng mở trên thiết bị iOS.';
-            document.querySelector('.content').insertBefore(warning, document.querySelector('.install-section'));
+            document.querySelector('.content').insertBefore(warning, step1);
+            
+            btnMobileconfig.disabled = true;
+            btnMobileconfig.classList.add('btn-disabled');
+            btnMobileconfig.classList.remove('pulse');
         }
         
         // Kiểm tra phiên bản iOS
@@ -298,23 +468,31 @@
             const warning = document.createElement('div');
             warning.className = 'warning';
             warning.innerHTML = `<strong>⚠️ iOS ${iosVersion} không được hỗ trợ:</strong> Yêu cầu iOS 12.0 trở lên.`;
-            document.querySelector('.content').insertBefore(warning, document.querySelector('.install-section'));
+            document.querySelector('.content').insertBefore(warning, step1);
+            
+            btnMobileconfig.disabled = true;
+            btnMobileconfig.classList.add('btn-disabled');
+            btnMobileconfig.classList.remove('pulse');
         }
         
-        // Thêm hiệu ứng khi di chuột vào nút
-        const installBtn = document.getElementById('installBtn');
-        installBtn.addEventListener('mouseenter', function() {
-            this.classList.remove('pulse');
-        });
-        
-        installBtn.addEventListener('mouseleave', function() {
-            this.classList.add('pulse');
-        });
-        
-        // Auto-focus nút cài đặt nếu trên iOS
-        if (isIOS()) {
-            installBtn.focus();
+        // Auto-scroll khi chuyển bước
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }
         }
+        
+        // Thêm sự kiện cho checklist
+        document.querySelectorAll('.checklist li').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.textDecoration = 'line-through';
+                this.style.opacity = '0.6';
+            });
+        });
     </script>
 </body>
 </html>
