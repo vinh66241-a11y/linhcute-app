@@ -10,15 +10,15 @@
                 <dict>
                     <key>kind</key>
                     <string>software-package</string>
-                    <!-- LINK GOOGLE DRIVE TRỰC TIẾP -->
+                    <!-- LINK GOOGLE DRIVE MỚI -->
                     <key>url</key>
-                    <string>https://drive.google.com/uc?export=download&amp;id=1w9EmVZUdF4GzfyQYEJN1dSePg-FZSm3V</string>
+                    <string>https://drive.google.com/uc?export=download&amp;id=1BgDozuzvx2Hj-__ckh0ghRhX5MbVMOVv</string>
                 </dict>
             </array>
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>
-                <string>org.brandonplank.flappybird</string>
+                <string>vn.vng.pubgmobile</string>
                 <key>bundle-version</key>
                 <string>1.0</string>
                 <key>kind</key>
