@@ -1,228 +1,293 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cài đặt Linhcute</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cài đặt Linhcute App</title>
     <style>
-        :root {
-            --primary: #007AFF;
-            --success: #34C759;
-        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            color: #333;
+            line-height: 1.6;
             min-height: 100vh;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
+        
         .container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 40px;
             max-width: 500px;
-            width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+            color: white;
+            padding: 40px 30px;
             text-align: center;
         }
+        
         .app-icon {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             background: white;
-            border-radius: 22px;
-            margin: 0 auto 20px;
+            border-radius: 18px;
+            margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
-            color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            font-size: 36px;
+            color: #007AFF;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
+        
         h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
+            font-size: 28px;
             font-weight: 700;
+            margin-bottom: 5px;
         }
+        
         .version {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 30px;
-            font-size: 16px;
+            font-size: 14px;
+            opacity: 0.9;
         }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .install-section {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
         .install-btn {
             display: inline-block;
-            background: var(--primary);
+            background: linear-gradient(135deg, #34C759 0%, #32D74B 100%);
             color: white;
-            padding: 18px 40px;
-            border-radius: 16px;
             text-decoration: none;
-            font-size: 20px;
+            padding: 16px 35px;
+            font-size: 18px;
             font-weight: 600;
-            margin: 25px 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0, 122, 255, 0.4);
+            border-radius: 14px;
             border: none;
             cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(52, 199, 89, 0.3);
+            margin: 15px 0;
             width: 100%;
+            max-width: 280px;
         }
+        
         .install-btn:hover {
-            background: #0056CC;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 122, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(52, 199, 89, 0.4);
         }
+        
+        .install-btn:active {
+            transform: translateY(0);
+        }
+        
         .steps {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 16px;
-            padding: 25px;
-            margin-top: 30px;
-            text-align: left;
+            background: #f8f9fa;
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 20px;
         }
+        
         .steps h3 {
-            margin-bottom: 15px;
-            font-size: 18px;
+            color: #007AFF;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            font-size: 16px;
         }
+        
         .steps ol {
-            padding-left: 20px;
+            padding-left: 18px;
         }
+        
         .steps li {
-            margin: 12px 0;
-            line-height: 1.5;
-        }
-        .warning {
-            background: rgba(255, 59, 48, 0.15);
-            border-left: 4px solid #FF3B30;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 12px 12px 0;
-            text-align: left;
-        }
-        .qr-section {
-            margin: 25px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-        }
-        .qr-code {
-            width: 180px;
-            height: 180px;
-            margin: 15px auto;
-            padding: 10px;
-            background: white;
-            border-radius: 12px;
-        }
-        .ios-only {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 6px 12px;
-            border-radius: 20px;
+            margin: 10px 0;
+            padding-left: 5px;
             font-size: 14px;
-            margin-top: 10px;
         }
+        
+        .warning {
+            background: #FFF3F3;
+            border-left: 4px solid #FF3B30;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            font-size: 14px;
+        }
+        
+        .info-box {
+            background: #E8F4FF;
+            border-left: 4px solid #007AFF;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            font-size: 14px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 15px;
+            color: #666;
+            font-size: 12px;
+            border-top: 1px solid #eee;
+        }
+        
+        .ios-badge {
+            display: inline-block;
+            background: rgba(0, 122, 255, 0.1);
+            color: #007AFF;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+        
         @media (max-width: 480px) {
             .container {
-                padding: 25px;
-                margin: 10px;
+                border-radius: 15px;
             }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
             h1 {
-                font-size: 28px;
+                font-size: 24px;
             }
+            
             .install-btn {
-                padding: 16px 30px;
-                font-size: 18px;
+                padding: 14px 25px;
+                font-size: 16px;
             }
         }
+        
+        /* Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
     </style>
-    <!-- QR Code library -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="app-icon">
-            📱
+        <!-- Header -->
+        <div class="header">
+            <div class="app-icon">
+                📱
+            </div>
+            <h1>Linhcute</h1>
+            <p class="version">Version 1.0</p>
+            <div class="ios-badge">
+                Chỉ dành cho iPhone/iPad
+            </div>
         </div>
         
-        <h1>Linhcute App</h1>
-        <p class="version">Version 1.0 • 15MB</p>
-        
-        <div class="qr-section">
-            <h3>📲 Scan QR Code</h3>
-            <div class="qr-code" id="qrCode"></div>
-            <p class="ios-only">iOS only</p>
+        <!-- Content -->
+        <div class="content">
+            <!-- Install Button -->
+            <div class="install-section">
+                <button class="install-btn pulse" id="installBtn">
+                    ⬇️ CÀI ĐẶT NGAY
+                </button>
+                <p style="font-size: 14px; color: #666; margin-top: 5px;">
+                    Bấm nút trên để cài đặt ứng dụng
+                </p>
+            </div>
+            
+            <!-- Warning -->
+            <div class="warning">
+                <strong>⚠️ Quan trọng:</strong> Sau khi cài đặt, vào <strong>Cài đặt → Cài đặt chung → Quản lý VPN & Thiết bị</strong> để tin cậy chứng chỉ Developer.
+            </div>
+            
+            <!-- Steps -->
+            <div class="steps">
+                <h3>📝 Hướng dẫn cài đặt:</h3>
+                <ol>
+                    <li><strong>Bước 1:</strong> Bấm nút "CÀI ĐẶT NGAY" bên trên</li>
+                    <li><strong>Bước 2:</strong> Chọn <strong>"Install"</strong> khi được hỏi</li>
+                    <li><strong>Bước 3:</strong> Chờ ứng dụng tải xong</li>
+                    <li><strong>Bước 4:</strong> Vào <strong>Cài đặt → Cài đặt chung → Quản lý VPN & Thiết bị</strong></li>
+                    <li><strong>Bước 5:</strong> Tìm chứng chỉ Developer → bấm <strong>"Trust"</strong></li>
+                    <li><strong>Bước 6:</strong> Ra màn hình chính → mở ứng dụng</li>
+                </ol>
+            </div>
+            
+            <!-- Info Box -->
+            <div class="info-box">
+                <strong>ℹ️ Thông tin ứng dụng:</strong>
+                <ul style="margin-top: 8px; padding-left: 18px; font-size: 13px;">
+                    <li>Tên: Linhcute</li>
+                    <li>Phiên bản: 1.0</li>
+                    <li>Yêu cầu: iOS 12.0+</li>
+                    <li>Dung lượng: ~15MB</li>
+                </ul>
+            </div>
         </div>
         
-        <!-- INSTALL BUTTON -->
-        <button class="install-btn" id="installBtn">
-            ⬇️ CÀI ĐẶT NGAY
-        </button>
-        
-        <div class="warning">
-            <strong>⚠️ Quan trọng:</strong> Sau khi cài đặt, vào <strong>Cài đặt → Cài đặt chung → Quản lý VPN & Thiết bị</strong> để trust chứng chỉ Developer.
-        </div>
-        
-        <div class="steps">
-            <h3>📝 Hướng dẫn cài đặt:</h3>
-            <ol>
-                <li>Bấm nút <strong>"CÀI ĐẶT NGAY"</strong> bên trên</li>
-                <li>Chọn <strong>"Install"</strong> khi được hỏi</li>
-                <li>Chờ tải và cài đặt xong</li>
-                <li>Vào <strong>Settings → General → VPN & Device Management</strong></li>
-                <li>Tìm chứng chỉ Developer và bấm <strong>"Trust"</strong></li>
-                <li>Ra màn hình chính và mở app</li>
-            </ol>
-        </div>
-        
-        <div style="margin-top: 25px; font-size: 14px; color: rgba(255, 255, 255, 0.7);">
-            <p>Yêu cầu: iOS 12.0 trở lên</p>
-            <p>© 2024 • Linhcute App</p>
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2024 Linhcute App</p>
+            <p style="margin-top: 3px; color: #999;">
+                Chỉ cài đặt ứng dụng từ nguồn đáng tin cậy
+            </p>
         </div>
     </div>
 
     <script>
-        // Link cài đặt
+        // URL cài đặt
         const installUrl = 'itms-services://?action=download-manifest&url=https://vinh66241-a11y.github.io/linhcute-app/manifest.plist';
         
-        // Cài đặt button
+        // Xử lý nút cài đặt
         document.getElementById('installBtn').addEventListener('click', function() {
-            window.location.href = installUrl;
-        });
-        
-        // Tạo QR Code
-        const qrCodeElement = document.getElementById('qrCode');
-        QRCode.toCanvas(qrCodeElement, installUrl, {
-            width: 160,
-            height: 160,
-            margin: 1,
-            color: {
-                dark: '#000000',
-                light: '#FFFFFF'
+            // Kiểm tra nếu là iOS
+            if (isIOS()) {
+                window.location.href = installUrl;
+            } else {
+                alert('Vui lòng mở trang này trên iPhone hoặc iPad để cài đặt ứng dụng.');
             }
         });
         
-        // Kiểm tra nếu không phải iOS
+        // Kiểm tra thiết bị iOS
         function isIOS() {
             return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         }
         
+        // Hiển thị cảnh báo nếu không phải iOS
         if (!isIOS()) {
             const warning = document.createElement('div');
             warning.className = 'warning';
-            warning.innerHTML = '<strong>📱 Vui lòng mở trang này trên iPhone/iPad:</strong> Tính năng cài đặt chỉ hoạt động trên thiết bị iOS.';
-            document.querySelector('.container').insertBefore(warning, document.getElementById('installBtn'));
+            warning.innerHTML = '<strong>📱 Thiết bị không hỗ trợ:</strong> Trang này chỉ dành cho iPhone và iPad. Vui lòng mở trên thiết bị iOS.';
+            document.querySelector('.content').insertBefore(warning, document.querySelector('.install-section'));
         }
         
-        // Auto-detect iOS version
+        // Kiểm tra phiên bản iOS
         function getIOSVersion() {
             const match = navigator.userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
             return match ? parseInt(match[1]) : null;
@@ -232,8 +297,23 @@
         if (iosVersion && iosVersion < 12) {
             const warning = document.createElement('div');
             warning.className = 'warning';
-            warning.innerHTML = `<strong>⚠️ iOS ${iosVersion} không được hỗ trợ:</strong> App yêu cầu iOS 12.0 trở lên.`;
-            document.querySelector('.container').insertBefore(warning, document.getElementById('installBtn'));
+            warning.innerHTML = `<strong>⚠️ iOS ${iosVersion} không được hỗ trợ:</strong> Yêu cầu iOS 12.0 trở lên.`;
+            document.querySelector('.content').insertBefore(warning, document.querySelector('.install-section'));
+        }
+        
+        // Thêm hiệu ứng khi di chuột vào nút
+        const installBtn = document.getElementById('installBtn');
+        installBtn.addEventListener('mouseenter', function() {
+            this.classList.remove('pulse');
+        });
+        
+        installBtn.addEventListener('mouseleave', function() {
+            this.classList.add('pulse');
+        });
+        
+        // Auto-focus nút cài đặt nếu trên iOS
+        if (isIOS()) {
+            installBtn.focus();
         }
     </script>
 </body>
