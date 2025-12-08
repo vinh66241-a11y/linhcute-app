@@ -10,21 +10,21 @@
                 <dict>
                     <key>kind</key>
                     <string>software-package</string>
-                    <!-- LINK GOOGLE DRIVE USERCONTENT MỚI -->
+                    <!-- LINK IPA MỚI CỦA BẠN -->
                     <key>url</key>
-                    <string>https://drive.usercontent.google.com/download?id=1BgDozuzvx2Hj-__ckh0ghRhX5MbVMOVv&amp;export=download&amp;authuser=0&amp;confirm=t</string>
+                    <string>https://dl.dropboxusercontent.com/scl/fi/i6wn0g1ccj1828twtgce1/test.ipa?rlkey=lugzcs5vunc1in119tl1dvfqt&amp;st=4khfcuvq</string>
                 </dict>
             </array>
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>
-                <string>vn.vng.pubgmobile</string>
+                <string>vn.vng.pubgmobile</string> <!-- SỬA BUNDLE ID NẾU CẦN -->
                 <key>bundle-version</key>
                 <string>1.0</string>
                 <key>kind</key>
                 <string>software</string>
                 <key>title</key>
-                <string>Linhcute</string>
+                <string>Test App</string>
             </dict>
         </dict>
     </array>
