@@ -10,21 +10,21 @@
                 <dict>
                     <key>kind</key>
                     <string>software-package</string>
-                    <!-- LINK IPA MỚI CỦA BẠN -->
+                    <!-- LINK IPA MỚI: test1.ipa -->
                     <key>url</key>
-                    <string>https://dl.dropboxusercontent.com/scl/fi/i6wn0g1ccj1828twtgce1/test.ipa?rlkey=lugzcs5vunc1in119tl1dvfqt&amp;st=4khfcuvq</string>
+                    <string>https://dl.dropboxusercontent.com/scl/fi/4qlq0dneuogkuql6567b4/test1.ipa?rlkey=gwvbyfj5r2v1grl2bi15z8dvx&amp;st=aaawi09r</string>
                 </dict>
             </array>
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>
-                <string>vn.vng.pubgmobile</string> <!-- SỬA BUNDLE ID NẾU CẦN -->
+                <string>vn.vng.pubgmobile</string>
                 <key>bundle-version</key>
                 <string>1.0</string>
                 <key>kind</key>
                 <string>software</string>
                 <key>title</key>
-                <string>linhcute</string>
+                <string>Linhcute</string>
             </dict>
         </dict>
     </array>
