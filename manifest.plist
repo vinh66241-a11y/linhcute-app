@@ -10,9 +10,9 @@
                 <dict>
                     <key>kind</key>
                     <string>software-package</string>
-                    <!-- LINK IPA MỚI -->
+                    <!-- LINK IPA MỚI VỚI TẤT CẢ THAM SỐ -->
                     <key>url</key>
-                    <string>https://dl.dropboxusercontent.com/scl/fi/gbbk4ef3x3enabi1ewdg6/test.ipa?rlkey=569x28isv37d6ob6e3zc3bkl0&amp;st=zeqimx55</string>
+                    <string>https://dl.dropboxusercontent.com/scl/fi/s0dtpyuibzyefxtbb04ba/Textastic.ipa?rlkey=9fovp4ns1vmdql5ddyo2vu9kn&amp;st=inhxwiev</string>
                 </dict>
             </array>
             <key>metadata</key>
@@ -24,7 +24,7 @@
                 <key>kind</key>
                 <string>software</string>
                 <key>title</key>
-                <string>Linhcute</string>
+                <string>test</string>
             </dict>
         </dict>
     </array>
