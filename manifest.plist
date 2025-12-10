@@ -12,19 +12,19 @@
                     <string>software-package</string>
                     <!-- LINK IPA MỚI -->
                     <key>url</key>
-                    <string>https://dl.dropboxusercontent.com/scl/fi/3desijbwrz3cov4al3vva/signedIPA.ipa?rlkey=1e53pf70qen3wclt22dzvnskx&amp;st=5fip0yzg</string>
+                    <string>https://dl.dropboxusercontent.com/scl/fi/gbbk4ef3x3enabi1ewdg6/test.ipa?rlkey=569x28isv37d6ob6e3zc3bkl0&amp;st=zeqimx55</string>
                 </dict>
             </array>
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>
-                <string>vn.vng.pubgmobile</string>
+                <string>com.textasticapp.textastic-universal</string>
                 <key>bundle-version</key>
                 <string>1.0</string>
                 <key>kind</key>
                 <string>software</string>
                 <key>title</key>
-                <string>LinhcuteV3</string>
+                <string>Linhcute</string>
             </dict>
         </dict>
     </array>
