@@ -6,6 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 
+<!-- iOS Add to Home Screen -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Check Uy Tín">
+<link rel="apple-touch-icon" href="icon.png">
+
 <style>
 :root{
     --bg:#f2f2f7;
@@ -22,7 +28,6 @@
         --card:rgba(28,28,30,.85);
         --text:#ffffff;
         --sub:#8e8e93;
-        --blue:#0a84ff;
     }
 }
 
@@ -129,6 +134,18 @@ button:active{
     color:#8b1e16;
 }
 
+/* Add to Home Screen hint */
+.a2hs{
+    display:none;
+    margin-top:14px;
+    padding:12px;
+    border-radius:14px;
+    background:rgba(10,132,255,.15);
+    color:var(--blue);
+    font-size:13px;
+    text-align:center;
+}
+
 .footer{
     margin-top:12px;
     text-align:center;
@@ -150,8 +167,12 @@ button:active{
 
         <div id="r" class="result"></div>
 
+        <div id="a2hs" class="a2hs">
+            Nhấn <b>Share</b> → <b>Add to Home Screen</b>
+        </div>
+
         <div class="footer">
-					Admin Web Zalo:0868748858
+            Thông tin mang tính tham khảo
         </div>
 
     </div>
@@ -162,6 +183,16 @@ button:active{
 function check(){
     TrustApp(document.getElementById("q").value.trim());
 }
+
+/* iOS Add to Home Screen detect */
+(function(){
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isStandalone = window.navigator.standalone === true;
+
+    if(isIOS && !isStandalone){
+        document.getElementById("a2hs").style.display = "block";
+    }
+})();
 </script>
 
 </body>
