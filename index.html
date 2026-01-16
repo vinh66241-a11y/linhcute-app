@@ -1,498 +1,168 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cài đặt Linhcute App</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
-        }
-        
-        .app-icon {
-            width: 80px;
-            height: 80px;
-            background: white;
-            border-radius: 18px;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            color: #007AFF;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        
-        .version {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        
-        .content {
-            padding: 30px;
-        }
-        
-        .step-section {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 14px;
-        }
-        
-        .step-title {
-            color: #007AFF;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 16px;
-        }
-        
-        .step-number {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            background: #007AFF;
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 24px;
-            font-size: 14px;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-        
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 12px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            text-decoration: none;
-            margin: 10px 0;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #34C759 0%, #32D74B 100%);
-            color: white;
-            box-shadow: 0 8px 20px rgba(52, 199, 89, 0.3);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(52, 199, 89, 0.4);
-        }
-        
-        .btn-secondary {
-            background: linear-gradient(135deg, #FF9500 0%, #FF5E3A 100%);
-            color: white;
-            box-shadow: 0 8px 20px rgba(255, 149, 0, 0.3);
-        }
-        
-        .btn-secondary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(255, 149, 0, 0.4);
-        }
-        
-        .btn-disabled {
-            background: #cccccc;
-            color: #666666;
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-        
-        .btn-disabled:hover {
-            transform: none;
-            box-shadow: none;
-        }
-        
-        .warning {
-            background: #FFF3F3;
-            border-left: 4px solid #FF3B30;
-            padding: 12px;
-            margin: 15px 0;
-            border-radius: 0 10px 10px 0;
-            font-size: 14px;
-        }
-        
-        .info-box {
-            background: #E8F4FF;
-            border-left: 4px solid #007AFF;
-            padding: 12px;
-            margin: 15px 0;
-            border-radius: 0 10px 10px 0;
-            font-size: 14px;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 15px;
-            color: #666;
-            font-size: 12px;
-            border-top: 1px solid #eee;
-        }
-        
-        .ios-badge {
-            display: inline-block;
-            background: rgba(0, 122, 255, 0.1);
-            color: #007AFF;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-            margin-top: 8px;
-        }
-        
-        .status {
-            text-align: center;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 8px;
-            font-size: 14px;
-            display: none;
-        }
-        
-        .status-success {
-            background: #E8F7EE;
-            color: #34C759;
-            border: 1px solid #34C759;
-        }
-        
-        .status-error {
-            background: #FFEEEE;
-            color: #FF3B30;
-            border: 1px solid #FF3B30;
-        }
-        
-        .checklist {
-            margin: 15px 0;
-            padding-left: 20px;
-        }
-        
-        .checklist li {
-            margin: 8px 0;
-            display: flex;
-            align-items: center;
-        }
-        
-        .checklist li:before {
-            content: "✓";
-            color: #34C759;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                border-radius: 15px;
-            }
-            
-            .header {
-                padding: 30px 20px;
-            }
-            
-            .content {
-                padding: 20px;
-            }
-            
-            h1 {
-                font-size: 24px;
-            }
-            
-            .btn {
-                padding: 12px;
-                font-size: 15px;
-            }
-        }
-        
-        /* Animation */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
-        }
-        
-        .pulse {
-            animation: pulse 1.5s infinite;
-        }
-        
-        .hidden {
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="app-icon">
-                📱
-            </div>
-            <h1>Linhcute</h1>
-            <p class="version">Version 1.0</p>
-            <div class="ios-badge">
-                Chỉ dành cho iPhone/iPad
-            </div>
-        </div>
-        
-        <!-- Content -->
-        <div class="content">
-            <!-- Status Messages -->
-            <div id="statusMobileconfig" class="status"></div>
-            <div id="statusInstall" class="status"></div>
-            
-            <!-- Bước 1: Cài đặt Mobileconfig -->
-            <div class="step-section" id="step1">
-                <div class="step-title">
-                    <span class="step-number">1</span>
-                    Cài đặt Chứng chỉ
-                </div>
-                <p style="font-size: 14px; color: #666; margin-bottom: 15px;">
-                    Trước khi cài ứng dụng, bạn cần cài đặt chứng chỉ Developer để hệ thống tin tưởng ứng dụng.
-                </p>
-                
-                <button class="btn btn-secondary pulse" id="btnMobileconfig">
-                    ⚙️ CÀI ĐẶT CHỨNG CHỈ
-                </button>
-                
-                <div class="checklist" id="mobileconfigChecklist">
-                    <li>Bấm nút "Cài đặt Chứng chỉ"</li>
-                    <li>Chọn "Cho phép" khi được hỏi</li>
-                    <li>Vào Settings → General → VPN & Device Management</li>
-                    <li>Bấm "Install" 2 lần</li>
-                    <li>Nhập passcode nếu được yêu cầu</li>
-                </div>
-            </div>
-            
-            <!-- Bước 2: Cài đặt Ứng dụng -->
-            <div class="step-section hidden" id="step2">
-                <div class="step-title">
-                    <span class="step-number">2</span>
-                    Cài đặt Ứng dụng
-                </div>
-                <p style="font-size: 14px; color: #666; margin-bottom: 15px;">
-                    Sau khi đã cài chứng chỉ, bạn có thể cài đặt ứng dụng Linhcute.
-                </p>
-                
-                <button class="btn btn-primary" id="btnInstallApp" disabled>
-                    ⬇️ CÀI ĐẶT ỨNG DỤNG
-                </button>
-                
-                <div class="checklist" id="installChecklist">
-                    <li>Bấm nút "Cài đặt Ứng dụng"</li>
-                    <li>Chọn "Install" khi được hỏi</li>
-                    <li>Chờ ứng dụng tải và cài đặt xong</li>
-                    <li>Mở ứng dụng từ màn hình chính</li>
-                </div>
-            </div>
-            
-            <!-- Warning -->
-            <div class="warning">
-                <strong>⚠️ Lưu ý quan trọng:</strong>
-                <ul style="margin-top: 8px; padding-left: 20px; font-size: 13px;">
-                    <li>Phải hoàn thành Bước 1 trước khi làm Bước 2</li>
-                    <li>Nếu gặp lỗi "Untrusted Developer", vào Settings → General → VPN & Device Management để trust chứng chỉ</li>
-                    <li>Chỉ cài đặt từ nguồn tin cậy</li>
-                </ul>
-            </div>
-            
-            <!-- Info Box -->
-            <div class="info-box">
-                <strong>ℹ️ Thông tin ứng dụng:</strong>
-                <ul style="margin-top: 8px; padding-left: 18px; font-size: 13px;">
-                    <li>Tên: PubgMobile Hack Free NonJB</li>
-                    <li>Phiên bản: 1.0</li>
-                    <li>Yêu cầu: iOS 12.0+</li>
-                    <li>Dung lượng: ~4GB</li>
-                    <li>Chứng chỉ: Developer Certificate</li>
-                </ul>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <div class="footer">
-            <p>© 2025 Made By Linhcute</p>
-            <p style="margin-top: 3px; color: #999;">
-                Quy trình cài đặt an toàn - 2 bước
-            </p>
-        </div>
-    </div>
+<meta charset="UTF-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 
-    <script>
-        // URLs
-        const mobileconfigUrl = 'https://release-assets.githubusercontent.com/github-production-release-asset/852142195/898ae2d9-c047-4279-96ae-6b41de99f137?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-12-07T15%3A38%3A28Z&rscd=attachment%3B+filename%3Dsigned_khoindvn.mobileconfig&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-12-07T14%3A37%3A36Z&ske=2025-12-07T15%3A38%3A28Z&sks=b&skv=2018-11-09&sig=RC8z9cd2t8Udre1ovnpgeLyrS8wcjHUj7RhO4iv4EF8%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2NTEyMDA2NywibmJmIjoxNzY1MTE5NzY3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.Xmm2LgaKQeTye5DMBy-b74MViml5U4dN1if8hVW0JJ4&response-content-disposition=attachment%3B%20filename%3Dsigned_khoindvn.mobileconfig&response-content-type=application%2Foctet-stream';
-        const installUrl = 'itms-services://?action=download-manifest&url=https://vinh66241-a11y.github.io/linhcute-app/manifest.plist';
-        
-        // DOM Elements
-        const btnMobileconfig = document.getElementById('btnMobileconfig');
-        const btnInstallApp = document.getElementById('btnInstallApp');
-        const statusMobileconfig = document.getElementById('statusMobileconfig');
-        const statusInstall = document.getElementById('statusInstall');
-        const step1 = document.getElementById('step1');
-        const step2 = document.getElementById('step2');
-        
-        // Biến trạng thái
-        let mobileconfigInstalled = false;
-        
-        // Kiểm tra thiết bị iOS
-        function isIOS() {
-            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        }
-        
-        // Hiển thị thông báo
-        function showStatus(element, message, type) {
-            element.textContent = message;
-            element.className = `status status-${type}`;
-            element.style.display = 'block';
-            
-            // Tự động ẩn sau 5 giây
-            setTimeout(() => {
-                element.style.display = 'none';
-            }, 5000);
-        }
-        
-        // Xử lý cài đặt Mobileconfig
-        btnMobileconfig.addEventListener('click', function() {
-            if (!isIOS()) {
-                showStatus(statusMobileconfig, '❌ Chỉ hỗ trợ trên iPhone/iPad', 'error');
-                return;
-            }
-            
-            // Mở link Mobileconfig
-            window.location.href = mobileconfigUrl;
-            
-            // Hiển thị hướng dẫn
-            showStatus(statusMobileconfig, '📱 Đang mở cài đặt chứng chỉ...', 'success');
-            
-            // Đổi nút thành "Đã cài đặt"
-            this.textContent = '✅ ĐÃ CÀI ĐẶT CHỨNG CHỈ';
-            this.classList.remove('btn-secondary', 'pulse');
-            this.classList.add('btn-disabled');
-            this.disabled = true;
-            
-            // Đánh dấu đã cài đặt Mobileconfig
-            mobileconfigInstalled = true;
-            
-            // Hiển thị bước 2 sau 3 giây
-            setTimeout(() => {
-                step2.classList.remove('hidden');
-                btnInstallApp.disabled = false;
-                btnInstallApp.classList.add('pulse');
-                showStatus(statusMobileconfig, '✅ Có thể chuyển sang Bước 2', 'success');
-            }, 3000);
-        });
-        
-        // Xử lý cài đặt ứng dụng
-        btnInstallApp.addEventListener('click', function() {
-            if (!isIOS()) {
-                showStatus(statusInstall, '❌ Chỉ hỗ trợ trên iPhone/iPad', 'error');
-                return;
-            }
-            
-            if (!mobileconfigInstalled) {
-                showStatus(statusInstall, '❌ Vui lòng cài đặt chứng chỉ trước (Bước 1)', 'error');
-                return;
-            }
-            
-            // Mở link cài đặt ứng dụng
-            window.location.href = installUrl;
-            
-            // Hiển thị thông báo
-            showStatus(statusInstall, '⬇️ Đang bắt đầu cài đặt ứng dụng...', 'success');
-            
-            // Đổi nút thành "Đang cài đặt"
-            this.textContent = '⏳ ĐANG CÀI ĐẶT...';
-            this.classList.remove('btn-primary', 'pulse');
-            this.classList.add('btn-disabled');
-            this.disabled = true;
-        });
-        
-        // Kiểm tra ban đầu
-        if (!isIOS()) {
-            const warning = document.createElement('div');
-            warning.className = 'warning';
-            warning.innerHTML = '<strong>📱 Thiết bị không hỗ trợ:</strong> Trang này chỉ dành cho iPhone và iPad. Vui lòng mở trên thiết bị iOS.';
-            document.querySelector('.content').insertBefore(warning, step1);
-            
-            btnMobileconfig.disabled = true;
-            btnMobileconfig.classList.add('btn-disabled');
-            btnMobileconfig.classList.remove('pulse');
-        }
-        
-        // Kiểm tra phiên bản iOS
-        function getIOSVersion() {
-            const match = navigator.userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
-            return match ? parseInt(match[1]) : null;
-        }
-        
-        const iosVersion = getIOSVersion();
-        if (iosVersion && iosVersion < 12) {
-            const warning = document.createElement('div');
-            warning.className = 'warning';
-            warning.innerHTML = `<strong>⚠️ iOS ${iosVersion} không được hỗ trợ:</strong> Yêu cầu iOS 12.0 trở lên.`;
-            document.querySelector('.content').insertBefore(warning, step1);
-            
-            btnMobileconfig.disabled = true;
-            btnMobileconfig.classList.add('btn-disabled');
-            btnMobileconfig.classList.remove('pulse');
-        }
-        
-        // Auto-scroll khi chuyển bước
-        function scrollToElement(elementId) {
-            const element = document.getElementById(elementId);
-            if (element) {
-                element.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-            }
-        }
-        
-        // Thêm sự kiện cho checklist
-        document.querySelectorAll('.checklist li').forEach(item => {
-            item.addEventListener('click', function() {
-                this.style.textDecoration = 'line-through';
-                this.style.opacity = '0.6';
-            });
-        });
-    </script>
+<style>
+:root{
+    --bg:#f2f2f7;
+    --card:rgba(255,255,255,.75);
+    --text:#1c1c1e;
+    --sub:#6e6e73;
+    --blue:#0a84ff;
+    --radius:18px;
+}
+
+@media (prefers-color-scheme: dark){
+    :root{
+        --bg:#000000;
+        --card:rgba(28,28,30,.85);
+        --text:#ffffff;
+        --sub:#8e8e93;
+        --blue:#0a84ff;
+    }
+}
+
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:var(--bg);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.app{
+    width:100%;
+    max-width:390px;
+    padding:20px;
+}
+
+.card{
+    background:var(--card);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-radius:var(--radius);
+    padding:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+/* Title */
+.header{
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:12px;
+    letter-spacing:.2px;
+    text-align:center;
+}
+
+/* Input */
+input{
+    width:100%;
+    padding:14px 16px;
+    border-radius:14px;
+    border:1px solid rgba(0,0,0,.08);
+    font-size:16px;
+    outline:none;
+    background:rgba(255,255,255,.9);
+    color:var(--text);
+}
+
+@media (prefers-color-scheme: dark){
+    input{
+        background:rgba(44,44,46,.9);
+        border:1px solid rgba(255,255,255,.08);
+    }
+}
+
+input::placeholder{
+    color:#8e8e93;
+}
+
+/* Button */
+button{
+    width:100%;
+    margin-top:14px;
+    padding:14px;
+    border-radius:14px;
+    border:0;
+    font-size:16px;
+    font-weight:600;
+    background:var(--blue);
+    color:#fff;
+    box-shadow:0 8px 20px rgba(10,132,255,.35);
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+/* Result */
+.result{
+    display:none;
+    margin-top:16px;
+    padding:14px;
+    border-radius:14px;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.safe{
+    background:rgba(52,199,89,.15);
+    color:#1c7c3c;
+}
+
+.warn{
+    background:rgba(255,159,10,.18);
+    color:#8a5b00;
+}
+
+.danger{
+    background:rgba(255,69,58,.18);
+    color:#8b1e16;
+}
+
+.footer{
+    margin-top:12px;
+    text-align:center;
+    font-size:11px;
+    color:var(--sub);
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+    <div class="card">
+
+        <div class="header">🇻🇳Check Uy Tín🇻🇳</div>
+
+        <input id="q" placeholder="Số điện thoại hoặc STK" autofocus>
+        <button onclick="check()">Tra cứu</button>
+
+        <div id="r" class="result"></div>
+
+        <div class="footer">
+					Admin Web Zalo:0868748858
+        </div>
+
+    </div>
+</div>
+
+<script src="trust.js"></script>
+<script>
+function check(){
+    TrustApp(document.getElementById("q").value.trim());
+}
+</script>
+
 </body>
 </html>
