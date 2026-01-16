@@ -1,198 +1,885 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="ios-theme">
 <head>
 <meta charset="UTF-8">
-<title></title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check Uy Tín • iOS 26</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#007AFF">
 
-<!-- iOS Add to Home Screen -->
+<!-- iOS 26 Meta Tags -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Check Uy Tín">
-<link rel="apple-touch-icon" href="icon.png">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23007AFF%22/><text x=%2250%22 y=%2265%22 text-anchor=%22middle%22 font-family=%22-apple-system%22 font-size=%2240%22 fill=%22white%22>✓</text></svg>">
 
+<!-- iOS 26 Fixed CSS -->
 <style>
-:root{
-    --bg:#f2f2f7;
-    --card:rgba(255,255,255,.75);
-    --text:#1c1c1e;
-    --sub:#6e6e73;
-    --blue:#0a84ff;
-    --radius:18px;
+/* ===== iOS 26 DESIGN TOKENS ===== */
+:root {
+  /* Spatial Depth System */
+  --depth-0: 0px;
+  --depth-1: 1px;
+  --depth-2: 5px;
+  --depth-3: 15px;
+  --depth-4: 30px;
+  
+  /* Glass Morphism Base */
+  --glass-light: rgba(255, 255, 255, 0.85);
+  --glass-dark: rgba(28, 28, 30, 0.85);
+  --glass-border-light: rgba(255, 255, 255, 0.25);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+  
+  /* iOS 26 Color Palette */
+  --ios-blue: #007AFF;
+  --ios-blue-glow: rgba(0, 122, 255, 0.4);
+  --ios-green: #34C759;
+  --ios-orange: #FF9500;
+  --ios-red: #FF3B30;
+  --ios-purple: #AF52DE;
+  
+  /* Text Hierarchy */
+  --text-primary: #1D1D1F;
+  --text-secondary: #6D6D72;
+  --text-tertiary: #8E8E93;
+  
+  /* Dynamic Shadows */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.18);
+  --shadow-xl: 0 40px 80px rgba(0, 0, 0, 0.25);
+  
+  /* Curvature System */
+  --radius-xs: 8px;
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+  --radius-pill: 9999px;
+  
+  /* Spacing System */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  
+  /* Animation Curves */
+  --curve-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --curve-fluid: cubic-bezier(0.4, 0, 0.2, 1);
+  --curve-sharp: cubic-bezier(0.4, 0, 0.6, 1);
 }
 
-@media (prefers-color-scheme: dark){
-    :root{
-        --bg:#000000;
-        --card:rgba(28,28,30,.85);
-        --text:#ffffff;
-        --sub:#8e8e93;
-    }
+/* ===== DARK MODE OVERRIDES ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --glass-light: rgba(44, 44, 46, 0.85);
+    --glass-dark: rgba(20, 20, 22, 0.95);
+    --glass-border-light: rgba(255, 255, 255, 0.15);
+    --glass-border-dark: rgba(255, 255, 255, 0.08);
+    
+    --text-primary: #F5F5F7;
+    --text-secondary: #A1A1A6;
+    --text-tertiary: #6D6D72;
+    
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 40px 80px rgba(0, 0, 0, 0.6);
+  }
 }
 
-*{box-sizing:border-box}
-
-body{
-    margin:0;
-    min-height:100vh;
-    background:var(--bg);
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;
-    color:var(--text);
-    display:flex;
-    align-items:center;
-    justify-content:center;
+/* ===== RESET & BASE STYLES ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
-.app{
-    width:100%;
-    max-width:390px;
-    padding:20px;
+*:focus {
+  outline: none !important;
 }
 
-.card{
-    background:var(--card);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    border-radius:var(--radius);
-    padding:20px;
-    box-shadow:0 20px 40px rgba(0,0,0,.15);
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 
+               'Helvetica Neue', system-ui, sans-serif;
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(0, 122, 255, 0.1) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 80%, rgba(255, 59, 48, 0.08) 0%, transparent 40%),
+    linear-gradient(135deg, #F5F5F7 0%, #FFFFFF 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  overflow-x: hidden;
 }
 
-/* Title */
-.header{
-    font-size:17px;
-    font-weight:600;
-    margin-bottom:12px;
-    letter-spacing:.2px;
-    text-align:center;
+@media (prefers-color-scheme: dark) {
+  body {
+    background: 
+      radial-gradient(ellipse at 20% 20%, rgba(0, 122, 255, 0.15) 0%, transparent 40%),
+      radial-gradient(ellipse at 80% 80%, rgba(255, 59, 48, 0.12) 0%, transparent 40%),
+      linear-gradient(135deg, #000000 0%, #1D1D1F 100%);
+  }
 }
 
-/* Input */
-input{
-    width:100%;
-    padding:14px 16px;
-    border-radius:14px;
-    border:1px solid rgba(0,0,0,.08);
-    font-size:16px;
-    outline:none;
-    background:rgba(255,255,255,.9);
-    color:var(--text);
+/* ===== SPATIAL CONTAINER ===== */
+.spatial-container {
+  width: 100%;
+  max-width: 400px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
-@media (prefers-color-scheme: dark){
-    input{
-        background:rgba(44,44,46,.9);
-        border:1px solid rgba(255,255,255,.08);
-    }
+/* ===== GLASS CARD ===== */
+.glass-card {
+  background: var(--glass-light);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: 
+    var(--shadow-lg),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(var(--depth-2));
+  transition: all 0.5s var(--curve-fluid);
 }
 
-input::placeholder{
-    color:#8e8e93;
+@media (prefers-color-scheme: dark) {
+  .glass-card {
+    background: var(--glass-dark);
+    border: 1px solid var(--glass-border-dark);
+  }
 }
 
-/* Button */
-button{
-    width:100%;
-    margin-top:14px;
-    padding:14px;
-    border-radius:14px;
-    border:0;
-    font-size:16px;
-    font-weight:600;
-    background:var(--blue);
-    color:#fff;
-    box-shadow:0 8px 20px rgba(10,132,255,.35);
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent);
+  z-index: 1;
 }
 
-button:active{
-    transform:scale(.98);
+/* ===== HEADER ===== */
+.header-container {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  position: relative;
 }
 
-/* Result */
-.result{
-    display:none;
-    margin-top:16px;
-    padding:14px;
-    border-radius:14px;
-    font-size:14px;
-    line-height:1.5;
+.gradient-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #007AFF 0%, #5856D6 50%, #AF52DE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-xs);
+  position: relative;
+  display: inline-block;
 }
 
-.safe{
-    background:rgba(52,199,89,.15);
-    color:#1c7c3c;
+.gradient-title::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #007AFF, transparent);
+  border-radius: var(--radius-pill);
 }
 
-.warn{
-    background:rgba(255,159,10,.18);
-    color:#8a5b00;
+.subtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-top: var(--space-xs);
+  opacity: 0.9;
 }
 
-.danger{
-    background:rgba(255,69,58,.18);
-    color:#8b1e16;
+/* ===== INPUT FIELD (FIXED NO OUTLINE) ===== */
+.input-container {
+  position: relative;
+  margin-bottom: var(--space-lg);
 }
 
-/* Add to Home Screen hint */
-.a2hs{
-    display:none;
-    margin-top:14px;
-    padding:12px;
-    border-radius:14px;
-    background:rgba(10,132,255,.15);
-    color:var(--blue);
-    font-size:13px;
-    text-align:center;
+.input-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.footer{
-    margin-top:12px;
-    text-align:center;
-    font-size:11px;
-    color:var(--sub);
+.ios-input {
+  width: 100%;
+  padding: 18px 20px;
+  font-size: 17px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 2px solid rgba(142, 142, 147, 0.2);
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+  outline: none !important;
+  transition: all 0.3s var(--curve-fluid);
+  box-shadow: var(--shadow-sm);
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ios-input {
+    background: rgba(44, 44, 46, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.ios-input:focus {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--ios-blue) !important;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15) !important;
+  transform: translateY(-1px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ios-input:focus {
+    background: rgba(44, 44, 46, 0.9);
+  }
+}
+
+.ios-input::placeholder {
+  color: var(--text-tertiary);
+  font-weight: 400;
+}
+
+/* ===== BUTTON ===== */
+.button-container {
+  position: relative;
+  margin-bottom: var(--space-lg);
+}
+
+.holographic-button {
+  width: 100%;
+  padding: 20px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #007AFF 0%, #0056CC 100%);
+  color: white;
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--curve-spring);
+  box-shadow: 
+    0 10px 30px rgba(0, 122, 255, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  transform: translateZ(0);
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.holographic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent);
+  transition: left 0.6s var(--curve-fluid);
+}
+
+.holographic-button:hover::before {
+  left: 100%;
+}
+
+.holographic-button:active {
+  transform: scale(0.97) translateZ(0);
+  box-shadow: 
+    0 5px 20px rgba(0, 122, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+.holographic-button::after {
+  content: '→';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  opacity: 0.8;
+  transition: transform 0.3s var(--curve-spring);
+}
+
+.holographic-button:hover::after {
+  transform: translateY(-50%) translateX(3px);
+}
+
+/* ===== LOADING ANIMATION ===== */
+.loading-spinner {
+  display: none;
+  width: 40px;
+  height: 40px;
+  margin: var(--space-lg) auto;
+  position: relative;
+}
+
+.spinner-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top-color: var(--ios-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-ring:nth-child(2) {
+  border-top-color: var(--ios-purple);
+  animation-delay: 0.3s;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== RESULT CARD ===== */
+.result-card {
+  margin-top: var(--space-lg);
+  border-radius: var(--radius-lg);
+  display: none;
+  animation: slideUp 0.5s var(--curve-spring);
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* iOS 26 Record Cards */
+.record-card {
+  background: var(--glass-light);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+  margin-bottom: var(--space-md);
+  animation: slideUp 0.5s var(--curve-spring);
+  transform: translateZ(0);
+}
+
+@media (prefers-color-scheme: dark) {
+  .record-card {
+    background: var(--glass-dark);
+  }
+}
+
+.record-header {
+  padding: var(--space-lg);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.record-icon {
+  font-size: 24px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.record-title h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.record-title p {
+  margin: var(--space-xs) 0 0;
+  opacity: 0.9;
+  font-size: 14px;
+}
+
+.record-score {
+  margin-left: auto;
+  text-align: center;
+}
+
+.score-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.1);
+}
+
+.score-circle span {
+  font-size: 18px;
+  font-weight: 800;
+  color: white;
+}
+
+.record-score small {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.record-body {
+  padding: var(--space-lg);
+}
+
+.warning-banner {
+  background: rgba(255, 59, 48, 0.15);
+  border: 1px solid rgba(255, 59, 48, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid rgba(142,142,147,0.1);
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-row .label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.info-row .value {
+  font-weight: 600;
+  text-align: right;
+  max-width: 60%;
+  word-break: break-all;
+}
+
+.highlight {
+  background: rgba(255, 204, 0, 0.3);
+  padding: 0 2px;
+  border-radius: 4px;
+  font-weight: 800;
+}
+
+.insights-section {
+  margin: var(--space-lg) 0;
+  padding: var(--space-md);
+  background: rgba(142,142,147,0.05);
+  border-radius: var(--radius-md);
+}
+
+.insights-section h4 {
+  margin: 0 0 var(--space-md);
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-sm);
+}
+
+.insight-chip {
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(255,255,255,0.1);
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.insight-chip[data-type="excellent"] {
+  background: rgba(52, 199, 89, 0.15);
+  border-color: rgba(52, 199, 89, 0.3);
+}
+
+.insight-chip[data-type="critical"] {
+  background: rgba(255, 59, 48, 0.15);
+  border-color: rgba(255, 59, 48, 0.3);
+  animation: pulse 2s infinite;
+}
+
+.note-section {
+  margin: var(--space-lg) 0;
+  padding: var(--space-md);
+  background: rgba(10, 132, 255, 0.05);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--ios-blue);
+}
+
+.note-section h4 {
+  margin: 0 0 var(--space-sm);
+  color: var(--ios-blue);
+}
+
+.note-section p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.reports-section {
+  margin: var(--space-lg) 0;
+}
+
+.reports-section h4 {
+  margin: 0 0 var(--space-md);
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.reports-list {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.report-item {
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(142,142,147,0.05);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+}
+
+.report-date {
+  display: inline-block;
+  background: rgba(142,142,147,0.1);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  margin-right: var(--space-sm);
+}
+
+.report-type {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.report-type.scam {
+  background: rgba(255, 59, 48, 0.15);
+  color: #FF3B30;
+}
+
+.report-type.positive {
+  background: rgba(52, 199, 89, 0.15);
+  color: #34C759;
+}
+
+.record-footer {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(142,142,147,0.1);
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.metadata {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.verified-badge {
+  background: rgba(52, 199, 89, 0.15);
+  color: #34C759;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: var(--space-md);
+  opacity: 0.5;
+}
+
+.empty-state h4 {
+  margin: 0 0 var(--space-sm);
+  color: var(--text-primary);
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.suggestions {
+  text-align: left;
+  background: rgba(142,142,147,0.05);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-lg);
+}
+
+.suggestions ul {
+  margin: var(--space-sm) 0 0;
+  padding-left: var(--space-lg);
+}
+
+.suggestions li {
+  margin-bottom: var(--space-xs);
+}
+
+.stats-preview {
+  margin-top: var(--space-xl);
+  padding: var(--space-md);
+  background: rgba(10, 132, 255, 0.05);
+  border-radius: var(--radius-md);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.stat {
+  padding: var(--space-sm);
+  text-align: center;
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.stat.safe {
+  background: rgba(52, 199, 89, 0.15);
+  color: #34C759;
+}
+
+.stat.warn {
+  background: rgba(255, 149, 0, 0.15);
+  color: #FF9500;
+}
+
+.stat.danger {
+  background: rgba(255, 59, 48, 0.15);
+  color: #FF3B30;
+}
+
+/* ===== A2HS BANNER ===== */
+.a2hs-banner {
+  display: none;
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  background: linear-gradient(135deg, rgba(0, 122, 255, 0.1) 0%, rgba(0, 122, 255, 0.05) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 122, 255, 0.2);
+  text-align: center;
+  animation: fadeIn 0.6s var(--curve-fluid);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.a2hs-icon {
+  font-size: 24px;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.a2hs-text {
+  font-size: 14px;
+  color: var(--ios-blue);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.a2hs-text b {
+  color: var(--text-primary);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: var(--space-xl);
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(142, 142, 147, 0.1);
+  position: relative;
+}
+
+.footer::before {
+  content: '⚠️';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--glass-light);
+  padding: 0 10px;
+  font-size: 10px;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.hidden {
+  display: none !important;
+}
+
+/* ===== FIX CHO iOS SAFARI ===== */
+@supports (-webkit-touch-callout: none) {
+  input, .ios-input, button {
+    -webkit-tap-highlight-color: transparent !important;
+  }
 }
 </style>
 </head>
 
 <body>
-
-<div class="app">
-    <div class="card">
-
-        <div class="header">🇻🇳Check Uy Tín🇻🇳</div>
-
-        <input id="q" placeholder="Số điện thoại hoặc STK" autofocus>
-        <button onclick="check()">Tra cứu</button>
-
-        <div id="r" class="result"></div>
-
-        <div id="a2hs" class="a2hs">
-            Nhấn <b>Share</b> → <b>Add to Home Screen</b>
-        </div>
-
-        <div class="footer">
-            Thông tin mang tính tham khảo
-        </div>
-
+<div class="spatial-container">
+  <div class="glass-card">
+    
+    <!-- Header -->
+    <div class="header-container">
+      <h1 class="gradient-title">Check Uy Tín</h1>
+      <p class="subtitle">Xác minh thông tin nhanh chóng & bảo mật</p>
     </div>
+    
+    <!-- Input Field -->
+    <div class="input-container">
+      <label class="input-label">Nhập thông tin cần kiểm tra</label>
+      <input type="text" 
+             id="queryInput" 
+             class="ios-input" 
+             placeholder="Số điện thoại / STK ngân hàng / Tên website"
+             autocomplete="off"
+             autocorrect="off"
+             spellcheck="false"
+             autofocus>
+    </div>
+    
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner hidden">
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+    </div>
+    
+    <!-- Action Button -->
+    <div class="button-container">
+      <button id="checkButton" class="holographic-button">
+        Kiểm tra ngay
+      </button>
+    </div>
+    
+    <!-- Result Container -->
+    <div id="resultContainer" class="result-card hidden">
+      <!-- Result will be injected here by trust.js -->
+    </div>
+    
+    <!-- A2HS Banner -->
+    <div id="a2hsBanner" class="a2hs-banner hidden">
+      <div class="a2hs-icon">📱</div>
+      <p class="a2hs-text">
+        <b>Thêm vào Màn hình chính</b><br>
+        Chạm <b>Chia sẻ</b> → <b>Thêm vào Màn hình chính</b>
+      </p>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+      Thông tin mang tính chất tham khảo • Bảo mật tuyệt đối<br>
+      <span style="opacity: 0.7; font-size: 11px;">Phiên bản iOS 26 • Glassmorphism UI</span>
+    </div>
+    
+  </div>
 </div>
 
+<!-- Include trust.js -->
 <script src="trust.js"></script>
-<script>
-function check(){
-    TrustApp(document.getElementById("q").value.trim());
-}
 
-/* iOS Add to Home Screen detect */
-(function(){
+<!-- Initialize UI - SIMPLE VERSION -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ iOS 26 UI Loaded');
+    
+    // Phát hiện iOS cho A2HS
     const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
     const isStandalone = window.navigator.standalone === true;
-
-    if(isIOS && !isStandalone){
-        document.getElementById("a2hs").style.display = "block";
+    const a2hsBanner = document.getElementById('a2hsBanner');
+    
+    if (isIOS && !isStandalone && a2hsBanner) {
+        setTimeout(() => {
+            a2hsBanner.classList.remove('hidden');
+        }, 3000);
     }
-})();
+    
+    // Hiệu ứng parallax (tùy chọn)
+    const card = document.querySelector('.glass-card');
+    if (card) {
+        document.addEventListener('mousemove', function(e) {
+            const x = (e.clientX / window.innerWidth - 0.5) * 8;
+            const y = (e.clientY / window.innerHeight - 0.5) * 8;
+            card.style.transform = `translateZ(var(--depth-2)) rotateY(${x}deg) rotateX(${y}deg)`;
+        });
+        
+        document.addEventListener('mouseleave', function() {
+            card.style.transform = 'translateZ(var(--depth-2))';
+        });
+    }
+});
 </script>
 
 </body>
