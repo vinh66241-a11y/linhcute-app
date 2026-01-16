@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23007AFF%22/><text x=%2250%22 y=%2265%22 text-anchor=%22middle%22 font-family=%22-apple-system%22 font-size=%2240%22 fill=%22white%22>✓</text></svg>">
 
-    <!-- iOS 26 Dynamic Styles - ĐÃ GIẢM 25% -->
+    <!-- iOS 26 Dynamic Styles - TOP CENTER FIXED -->
     <style>
         /* ===== iOS 26 DESIGN TOKENS ===== */
         :root {
@@ -36,21 +36,21 @@
             --glass-light: rgba(255, 255, 255, 0.92);
             --glass-dark: rgba(28, 28, 30, 0.92);
 
-            /* Spacing - GIẢM 25% */
+            /* Spacing - COMPACT */
             --space-xs: 3px;
             --space-sm: 6px;
             --space-md: 9px;
             --space-lg: 12px;
             --space-xl: 15px;
 
-            /* Border Radius - GIẢM 25% */
+            /* Border Radius */
             --radius-sm: 9px;
             --radius-md: 12px;
             --radius-lg: 15px;
             --radius-xl: 18px;
             --radius-pill: 999px;
 
-            /* Shadows - GIẢM 25% */
+            /* Shadows */
             --shadow-subtle: 0 3px 15px rgba(0, 0, 0, 0.06);
             --shadow-medium: 0 6px 22px rgba(0, 0, 0, 0.09);
             --shadow-lift: 0 9px 30px rgba(0, 0, 0, 0.12);
@@ -78,6 +78,12 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 
                 'Segoe UI', system-ui, sans-serif;
@@ -88,13 +94,14 @@
             color: var(--text-primary);
             min-height: 100vh;
             display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 8px; /* GIẢM 33% */
-            line-height: 1.4; /* GIẢM từ 1.5 */
-            letter-spacing: -0.008em; /* GIẢM từ -0.01em */
+            flex-direction: column; /* CHANGED: column layout */
+            align-items: center; /* CHANGED: center horizontally */
+            justify-content: flex-start; /* CHANGED: start from top */
+            padding: 8px;
+            line-height: 1.4;
+            letter-spacing: -0.008em;
             -webkit-font-smoothing: antialiased;
-            font-size: 14px; /* BASE FONT GIẢM */
+            font-size: 14px;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -106,21 +113,21 @@
             }
         }
 
-        /* ===== MAIN CONTAINER - GIẢM 25% ===== */
+        /* ===== MAIN CONTAINER - TOP CENTER ===== */
         .main-container {
             width: 100%;
-            max-width: 320px; /* GIẢM từ 420px */
-            margin-top: 6px;
+            max-width: 320px;
+            margin-top: 320px; /* Fixed top margin */
         }
 
-        /* ===== GLASS CARD - GIẢM 25% ===== */
+        /* ===== GLASS CARD ===== */
         .glass-card {
             background: var(--glass-light);
-            backdrop-filter: blur(22px) saturate(180%); /* GIẢM từ 30px */
+            backdrop-filter: blur(22px) saturate(180%);
             -webkit-backdrop-filter: blur(22px) saturate(180%);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: var(--radius-xl);
-            padding: 15px; /* GIẢM từ 20px */
+            padding: 15px;
             box-shadow: var(--shadow-medium);
         }
 
@@ -131,11 +138,11 @@
             }
         }
 
-        /* ===== HEADER - GIẢM 25% ===== */
+        /* ===== HEADER ===== */
         .header {
             text-align: center;
-            margin-bottom: 15px; /* GIẢM từ 20px */
-            padding-bottom: 12px; /* GIẢM từ 16px */
+            margin-bottom: 15px;
+            padding-bottom: 12px;
             position: relative;
         }
 
@@ -145,17 +152,17 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 40px; /* GIẢM từ 50px */
-            height: 2px; /* GIẢM từ 3px */
+            width: 40px;
+            height: 2px;
             background: linear-gradient(90deg, var(--ios-blue), var(--ios-purple));
             border-radius: var(--radius-pill);
             opacity: 0.8;
         }
 
         .title {
-            font-size: 20px; /* GIẢM từ 26px */
+            font-size: 20px;
             font-weight: 800;
-            letter-spacing: -0.02em; /* GIẢM */
+            letter-spacing: -0.02em;
             background: linear-gradient(135deg, 
                 var(--ios-blue) 0%, 
                 #5856D6 50%, 
@@ -163,47 +170,47 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 3px; /* GIẢM từ 4px */
+            margin-bottom: 3px;
             line-height: 1.1;
         }
 
         .subtitle {
-            font-size: 11px; /* GIẢM từ 14px */
+            font-size: 11px;
             color: var(--text-secondary);
             font-weight: 400;
             opacity: 0.9;
-            line-height: 1.3; /* GIẢM từ 1.4 */
-            max-width: 240px; /* GIẢM từ 280px */
+            line-height: 1.3;
+            max-width: 240px;
             margin: 0 auto;
         }
 
-        /* ===== INPUT FIELD - GIẢM 25% ===== */
+        /* ===== INPUT FIELD ===== */
         .input-group {
-            margin-bottom: 12px; /* GIẢM từ 16px */
+            margin-bottom: 12px;
         }
 
         .input-label {
             display: block;
-            font-size: 10px; /* GIẢM từ 13px */
+            font-size: 10px;
             font-weight: 600;
             color: var(--text-secondary);
-            margin-bottom: 4px; /* GIẢM từ 6px */
+            margin-bottom: 4px;
             padding-left: 2px;
             text-transform: uppercase;
-            letter-spacing: 0.4px; /* GIẢM từ 0.5px */
+            letter-spacing: 0.4px;
         }
 
         .ios-input {
             width: 100%;
-            padding: 10px; /* GIẢM từ 14px */
-            font-size: 12px; /* GIẢM từ 15px */
+            padding: 10px;
+            font-size: 12px;
             font-weight: 500;
             background: rgba(255, 255, 255, 0.8);
-            border: 1.5px solid transparent; /* GIẢM từ 2px */
+            border: 1.5px solid transparent;
             border-radius: var(--radius-lg);
             color: var(--text-primary);
             outline: none;
-            transition: all 0.2s var(--ease-in-out); /* GIẢM từ 0.3s */
+            transition: all 0.2s var(--ease-in-out);
             box-shadow: var(--shadow-subtle);
         }
 
@@ -211,7 +218,7 @@
             color: var(--text-tertiary);
             font-weight: 400;
             opacity: 0.7;
-            font-size: 11px; /* GIẢM */
+            font-size: 11px;
         }
 
         .ios-input:focus {
@@ -231,40 +238,40 @@
         }
 
         .input-hint {
-            font-size: 9px; /* GIẢM từ 11px */
+            font-size: 9px;
             color: var(--text-tertiary);
-            margin-top: 3px; /* GIẢM từ 4px */
+            margin-top: 3px;
             padding-left: 2px;
             opacity: 0.7;
         }
 
-        /* ===== BUTTON - GIẢM 25% ===== */
+        /* ===== BUTTON ===== */
         .button-group {
-            margin: 15px 0; /* GIẢM từ 20px */
+            margin: 15px 0;
         }
 
         .ios-button {
             width: 100%;
-            padding: 12px; /* GIẢM từ 16px */
-            font-size: 12px; /* GIẢM từ 16px */
+            padding: 12px;
+            font-size: 12px;
             font-weight: 700;
-            letter-spacing: 0.2px; /* GIẢM từ 0.3px */
+            letter-spacing: 0.2px;
             background: linear-gradient(135deg, var(--ios-blue) 0%, #0056CC 100%);
             color: white;
             border: none;
             border-radius: var(--radius-lg);
             cursor: pointer;
-            transition: all 0.3s var(--ease-in-out); /* GIẢM từ 0.4s */
-            box-shadow: 0 6px 22px rgba(0, 122, 255, 0.2); /* GIẢM */
+            transition: all 0.3s var(--ease-in-out);
+            box-shadow: 0 6px 22px rgba(0, 122, 255, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px; /* GIẢM từ 8px */
+            gap: 6px;
         }
 
         .ios-button:hover {
-            transform: translateY(-1px); /* GIẢM từ -2px */
-            box-shadow: 0 9px 30px rgba(0, 122, 255, 0.3); /* GIẢM */
+            transform: translateY(-1px);
+            box-shadow: 0 9px 30px rgba(0, 122, 255, 0.3);
         }
 
         .ios-button:active {
@@ -278,21 +285,21 @@
         }
 
         .button-icon {
-            font-size: 14px; /* GIẢM từ 18px */
+            font-size: 14px;
             opacity: 0.9;
-            transition: transform 0.2s var(--ease-in-out); /* GIẢM */
+            transition: transform 0.2s var(--ease-in-out);
         }
 
         .ios-button:hover .button-icon {
-            transform: translateX(2px); /* GIẢM từ 3px */
+            transform: translateX(2px);
         }
 
-        /* ===== LOADING - GIẢM 25% ===== */
+        /* ===== LOADING ===== */
         .loading-spinner {
             display: none;
-            width: 38px; /* GIẢM từ 50px */
-            height: 38px; /* GIẢM từ 50px */
-            margin: 12px auto; /* GIẢM từ 16px */
+            width: 38px;
+            height: 38px;
+            margin: 12px auto;
             position: relative;
         }
 
@@ -300,7 +307,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            border: 2px solid transparent; /* GIẢM từ 3px */
+            border: 2px solid transparent;
             border-top-color: var(--ios-blue);
             border-radius: 50%;
             animation: spin 1s linear infinite;
@@ -320,17 +327,35 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* ===== RESULT - GIẢM 25% ===== */
+        /* ===== RESULT CONTAINER - SCROLLABLE ===== */
         .result-container {
-            margin-top: 12px; /* GIẢM từ 16px */
+            margin-top: 12px;
             display: none;
-            animation: slideIn 0.4s var(--ease-in-out); /* GIẢM từ 0.5s */
+            animation: slideIn 0.4s var(--ease-in-out);
+            max-height: 300px; /* Limit height */
+            overflow-y: auto; /* Enable scrolling */
+            width: 100%;
+        }
+
+        /* Custom scrollbar */
+        .result-container::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .result-container::-webkit-scrollbar-track {
+            background: rgba(142, 142, 147, 0.1);
+            border-radius: 2px;
+        }
+
+        .result-container::-webkit-scrollbar-thumb {
+            background: rgba(142, 142, 147, 0.3);
+            border-radius: 2px;
         }
 
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateY(15px); /* GIẢM từ 20px */
+                transform: translateY(15px);
             }
             to {
                 opacity: 1;
@@ -340,11 +365,12 @@
 
         .result-card {
             background: var(--glass-light);
-            backdrop-filter: blur(15px); /* GIẢM từ 20px */
+            backdrop-filter: blur(15px);
             border-radius: var(--radius-lg);
-            padding: 12px; /* GIẢM từ 16px */
+            padding: 12px;
             border: 1px solid rgba(255, 255, 255, 0.15);
             box-shadow: var(--shadow-subtle);
+            width: 100%;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -356,20 +382,20 @@
         .result-header {
             display: flex;
             align-items: center;
-            gap: 9px; /* GIẢM từ 12px */
-            margin-bottom: 9px; /* GIẢM từ 12px */
-            padding-bottom: 9px; /* GIẢM từ 12px */
+            gap: 9px;
+            margin-bottom: 9px;
+            padding-bottom: 9px;
             border-bottom: 1px solid rgba(142, 142, 147, 0.1);
         }
 
         .result-icon {
-            width: 30px; /* GIẢM từ 40px */
-            height: 30px; /* GIẢM từ 40px */
+            width: 30px;
+            height: 30px;
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px; /* GIẢM từ 18px */
+            font-size: 14px;
             flex-shrink: 0;
         }
 
@@ -406,60 +432,60 @@
         }
 
         .result-title h3 {
-            font-size: 13px; /* GIẢM từ 17px */
+            font-size: 13px;
             font-weight: 700;
-            margin-bottom: 2px; /* GIẢM từ 3px */
+            margin-bottom: 2px;
             line-height: 1.2;
         }
 
         .result-title p {
-            font-size: 10px; /* GIẢM từ 12px */
+            font-size: 10px;
             color: var(--text-secondary);
             opacity: 0.9;
         }
 
         .result-score {
             background: rgba(142, 142, 147, 0.1);
-            padding: 3px 6px; /* GIẢM từ 4px 8px */
+            padding: 3px 6px;
             border-radius: var(--radius-pill);
-            font-size: 10px; /* GIẢM từ 13px */
+            font-size: 10px;
             font-weight: 600;
             color: var(--text-primary);
         }
 
         .result-body {
-            margin-top: 9px; /* GIẢM từ 12px */
+            margin-top: 9px;
         }
 
         .result-message {
-            font-size: 11px; /* GIẢM từ 14px */
-            line-height: 1.4; /* GIẢM từ 1.5 */
+            font-size: 11px;
+            line-height: 1.4;
             color: var(--text-primary);
-            margin-bottom: 12px; /* GIẢM từ 16px */
+            margin-bottom: 12px;
         }
 
         .result-details {
             background: rgba(142, 142, 147, 0.05);
             border-radius: var(--radius-md);
-            padding: 9px; /* GIẢM từ 12px */
-            margin-top: 9px; /* GIẢM từ 12px */
+            padding: 9px;
+            margin-top: 9px;
         }
 
         .result-details h4 {
-            font-size: 9px; /* GIẢM từ 12px */
+            font-size: 9px;
             font-weight: 600;
             color: var(--text-secondary);
-            margin-bottom: 6px; /* GIẢM từ 8px */
+            margin-bottom: 6px;
             text-transform: uppercase;
-            letter-spacing: 0.4px; /* GIẢM từ 0.5px */
+            letter-spacing: 0.4px;
         }
 
         .detail-item {
             display: flex;
             justify-content: space-between;
-            padding: 6px 0; /* GIẢM từ 8px */
+            padding: 6px 0;
             border-bottom: 1px solid rgba(142, 142, 147, 0.1);
-            font-size: 10px; /* GIẢM từ 13px */
+            font-size: 10px;
         }
 
         .detail-item:last-child {
@@ -479,25 +505,25 @@
 
         .result-actions {
             display: flex;
-            gap: 6px; /* GIẢM từ 8px */
-            margin-top: 12px; /* GIẢM từ 16px */
+            gap: 6px;
+            margin-top: 12px;
         }
 
         .action-button {
             flex: 1;
-            padding: 9px; /* GIẢM từ 12px */
+            padding: 9px;
             background: rgba(142, 142, 147, 0.1);
             border: none;
             border-radius: var(--radius-md);
-            font-size: 10px; /* GIẢM từ 13px */
+            font-size: 10px;
             font-weight: 600;
             color: var(--text-primary);
             cursor: pointer;
-            transition: all 0.2s var(--ease-in-out); /* GIẢM từ 0.3s */
+            transition: all 0.2s var(--ease-in-out);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 3px; /* GIẢM từ 4px */
+            gap: 3px;
         }
 
         .action-button:hover {
@@ -514,19 +540,20 @@
             background: #0056CC;
         }
 
-        /* ===== FOOTER - GIẢM 25% ===== */
+        /* ===== FOOTER - STICKY BOTTOM ===== */
         .footer {
-            margin-top: 15px; /* GIẢM từ 20px */
-            padding-top: 12px; /* GIẢM từ 16px */
+            margin-top: 15px;
+            padding-top: 12px;
             border-top: 1px solid rgba(142, 142, 147, 0.1);
             text-align: center;
+            width: 100%;
         }
 
         .footer-text {
-            font-size: 9px; /* GIẢM từ 11px */
+            font-size: 9px;
             color: var(--text-tertiary);
-            line-height: 1.4; /* GIẢM từ 1.5 */
-            max-width: 240px; /* GIẢM từ 280px */
+            line-height: 1.4;
+            max-width: 240px;
             margin: 0 auto;
         }
 
@@ -534,11 +561,11 @@
             display: inline-block;
             background: rgba(0, 122, 255, 0.1);
             color: var(--ios-blue);
-            padding: 2px 8px; /* GIẢM từ 3px 10px */
+            padding: 2px 8px;
             border-radius: var(--radius-pill);
-            font-size: 8px; /* GIẢM từ 10px */
+            font-size: 8px;
             font-weight: 600;
-            margin-top: 4px; /* GIẢM từ 6px */
+            margin-top: 4px;
         }
 
         /* ===== UTILITY ===== */
@@ -549,62 +576,83 @@
         /* ===== STYLE CHO MARK ===== */
         mark {
             background: linear-gradient(120deg, #ffeb3b 0%, #ffeb3b 100%);
-            padding: 1px 3px; /* GIẢM */
-            border-radius: 2px; /* GIẢM từ 3px */
+            padding: 1px 3px;
+            border-radius: 2px;
             font-weight: bold;
             color: #000;
         }
 
-        /* ===== RESPONSIVE ĐIỆN THOẠI - GIẢM THÊM ===== */
+        /* ===== SPACER FOR BETTER VISIBILITY ===== */
+        .spacer {
+            flex: 1;
+            min-height: 10px;
+        }
+
+        /* ===== RESPONSIVE ĐIỆN THOẠI ===== */
         @media (max-width: 480px) {
             body {
-                padding: 6px !important; /* GIẢM thêm */
-                font-size: 13px; /* GIẢM thêm */
+                padding: 6px !important;
+                font-size: 13px;
             }
             
             .main-container {
                 max-width: 100%;
-                margin-top: 3px;
+                margin-top: 4px;
             }
             
             .glass-card {
-                padding: 12px !important; /* GIẢM thêm */
-                border-radius: 15px; /* GIẢM từ 18px */
+                padding: 12px !important;
+                border-radius: 15px;
             }
             
             .title {
-                font-size: 18px !important; /* GIẢM thêm */
+                font-size: 18px !important;
             }
             
             .subtitle {
-                font-size: 10px !important; /* GIẢM thêm */
+                font-size: 10px !important;
             }
             
             .ios-input {
-                padding: 8px !important; /* GIẢM thêm */
-                font-size: 11px !important; /* GIẢM thêm */
+                padding: 8px !important;
+                font-size: 11px !important;
             }
             
             .ios-button {
-                padding: 10px !important; /* GIẢM thêm */
-                font-size: 11px !important; /* GIẢM thêm */
+                padding: 10px !important;
+                font-size: 11px !important;
+            }
+            
+            .result-container {
+                max-height: 250px; /* Smaller on mobile */
             }
             
             .result-header {
                 flex-direction: column;
                 text-align: center;
-                gap: 6px !important; /* GIẢM thêm */
+                gap: 6px !important;
             }
             
             .detail-item {
-                font-size: 9px !important; /* GIẢM thêm */
-                padding: 4px 0 !important; /* GIẢM thêm */
+                font-size: 9px !important;
+                padding: 4px 0 !important;
             }
             
             .result-icon {
-                width: 26px !important; /* GIẢM thêm */
-                height: 26px !important; /* GIẢM thêm */
-                font-size: 12px !important; /* GIẢM thêm */
+                width: 26px !important;
+                height: 26px !important;
+                font-size: 12px !important;
+            }
+        }
+
+        /* ===== FIX FOR VERY SMALL SCREENS ===== */
+        @media (max-height: 600px) {
+            .result-container {
+                max-height: 200px;
+            }
+            
+            body {
+                padding: 4px !important;
             }
         }
     </style>
@@ -616,7 +664,7 @@
             <!-- Header -->
             <div class="header">
                 <h1 class="title">Check Uy Tín</h1>
-                <p class="subtitle">Tra cứu thông tin bảo mật & nhanh chóng</p>
+                <p class="subtitle">Tra cứu thông tin bảo mật & nhanchóng</p>
             </div>
 
             <!-- Input Field -->
@@ -642,7 +690,7 @@
                 </button>
             </div>
 
-            <!-- Result Container -->
+            <!-- Result Container (Scrollable) -->
             <div id="resultContainer" class="result-container hidden">
                 <!-- Result will be inserted here -->
             </div>
